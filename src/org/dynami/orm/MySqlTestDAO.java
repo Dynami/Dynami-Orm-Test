@@ -33,7 +33,7 @@ public class MySqlTestDAO {
 		config.setMaximumPoolSize(1);
 		ds = new HikariDataSource(config);
 		
-		DAO.$.setUp(DAO.Rdbms.MySql, ds, c->c.close());
+		DAO.$.setUp(DAO.SqlDialect.MySql, ds, c->c.close());
 		DAO.$.save(employ01);
 		DAO.$.save(employ02);
 		DAO.$.save(employ03);
