@@ -2,6 +2,9 @@ package org.dynami.orm;
 
 import java.util.Date;
 
+import org.dynami.orm.DAO.IEntity;
+import org.dynami.orm.DAO.IField;
+
 @IEntity
 public class Employ {
 	public Employ() {}
