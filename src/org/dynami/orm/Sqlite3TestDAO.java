@@ -30,7 +30,7 @@ public class Sqlite3TestDAO {
 		hikariConfig.setDriverClassName("org.sqlite.JDBC");
 		hikariConfig.setJdbcUrl("jdbc:sqlite:" + databaseFile.getAbsolutePath());
 		ds = new HikariDataSource(hikariConfig);
-		DAO.$.setup(DAO.SqlDialect.Sqlite, ds);
+		DAO.$.setup(DAO.SqlDialect.Sqlite, ds, c->c.close());
 		DAO.$.save(employ01);
 		DAO.$.save(employ02);
 		DAO.$.save(employ03);
