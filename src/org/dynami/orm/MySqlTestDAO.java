@@ -2,6 +2,7 @@ package org.dynami.orm;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -46,6 +47,13 @@ public class MySqlTestDAO {
 	public void tearDown() throws Exception {
 //		DAO.$.executeNativeSQL("drop table employ");
 		ds.close();
+	}
+	
+	@Test
+	public final void testSelectCursor() throws Exception {
+		final AtomicInteger counter = new AtomicInteger(0);
+		int result = DAO.$.select(e->counter.incrementAndGet(), Employ.class, "select * from employ");
+		Assert.assertEquals(result, counter.get());
 	}
 
 	@Test
